@@ -3,4 +3,17 @@
 
 #You can download the sample data at http://www.pythonlearn.com/code/mbox-short.txt
 '''
-
+name = raw_input("Enter file: ")
+if len(name) < 1 : name = "mbox-short.txt"
+file = open(name, 'r')
+counts = dict()
+for name in file:
+  if name.startswith('From: '):
+    if name not in counts:
+        counts[name] = 1
+    else:
+        counts[name] = counts[name] + 1
+maximum = max(counts.values())
+for key, value in counts.items():
+    if maximum == value:
+        print (key.strip('From: ')).strip('\n') + ' ' + str(value)
