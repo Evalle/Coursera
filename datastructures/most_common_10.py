@@ -1,5 +1,5 @@
 #python3
-fhand = open('romeo.txt')
+fhand = open('text.txt')
 count = dict()
 for line in fhand:
     words = line.split()
@@ -7,10 +7,10 @@ for line in fhand:
         count[word] = count.get(word, 0) + 1
 
 lst = list()
-for key,value in counts.items():
+for key,value in count.items():
     lst.append( (value,key) )
 
 lst.sort(reverse=True)
 
 for value,key in lst[:10]:
-    prunt key,value
+    print(key,value)
