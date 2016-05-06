@@ -1,19 +1,16 @@
 import re
 try:
-    fhand = open('_data.txt')
+    fhandler = open("actual_data.txt")
 except FileNotFoundError:
-    fhand = open(input('Your filename: '))
+    fhandler = open(input("Your filename: "))
 lst = list()
-for line in fhand:
-    y = re.findall('[0-9]+', line)
-    if len(y) != 0:
-        lst.append(y)
-lst = (sum(lst, []))
-sum = 0
+# s = summ
+s = 0
+for line in fhandler:
+    result = re.findall('[0-9]+', line)
+    for i in result:
+        if len(i) != 0:
+            lst.append(i)
 for i in lst:
-    sum+=int(i)
-print(sum)
-
-
-
-
+    s += int(i)
+print(s)
