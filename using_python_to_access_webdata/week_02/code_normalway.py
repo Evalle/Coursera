@@ -1,14 +1,17 @@
+import re
 try:
-    fhand = open("actual_da.txt")
+    fhandler = open("actual_data.txt")
 except FileNotFoundError:
-    fhand = open(input("Your filename: "))
+    fhandler = open(input("Your filename: "))
 lst = list()
-sum = 0
-for line in fhand:
-    words = line.split()
-    for i in words:
-        if i.isdigit():
-            sum += int(i)
-print(sum)
-
+# s = summ
+s = 0
+for line in fhandler:
+    result = re.findall('[0-9]+', line)
+    for i in result:
+        if len(i) != 0:
+            lst.append(i)
+for i in lst:
+    s += int(i)
+print(s)
 
