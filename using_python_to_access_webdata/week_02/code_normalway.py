@@ -7,10 +7,10 @@ lst = list()
 # s = summ
 s = 0
 for line in fhandler:
-    result = re.findall('[0-9]+', line)
-    for i in result:
-        if len(i) != 0:
-            lst.append(i)
+    words = line.split()
+    for item in words:
+        if item.isdigit():
+            lst.append(item)
 for i in lst:
     s += int(i)
 print(s)
