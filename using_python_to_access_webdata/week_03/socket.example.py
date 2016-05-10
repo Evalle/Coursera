@@ -4,7 +4,7 @@ mysock.connect(('www.py4inf.com', 80))
 
 message = 'GET http://www.py4inf.com/code/romeo.txt HTTP/1.0\n\n'
 
-mysock.send(message.encode('utf-8'))
+mysock.send(message.encode())
 
 while True:
     data = mysock.recv(512)
