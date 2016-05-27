@@ -2,22 +2,25 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 url = input('Enter URL: ')
-#count = int(input('Enter count: '))
-position = int(input('Enter position: '))
+count = int(input('Enter count: '))
+position = int(input('Enter position: ')) # for counting inside of the list
+lst = list()
 
-def followtheleader(url, position):
+for i in range(count):
     html = urlopen(url).read()
     soup = BeautifulSoup(html, "html.parser")
-    lst = list()
+    tags = soup('a')
+    for tag in tags:
+        lst.append(tag)
+    url = lst[position-1].get('href', None)
+    del lst[:]
+print('Retrieving: ', url)
 
-    for link in soup.find_all('a'):
-        lst.append((link.get('href')))
 
-    return(lst[position-1])
 
-print(followtheleader(url, position))
 
-#for tag in tags:
+
+        #for tag in tags:
 #    print('TAG:', tag)
 #     print('URL:', tag.get('href', None))
 #    print('Contents:', tag.contents[0])
