@@ -1,5 +1,6 @@
 import json
-import urllib
+import urllib.parse
+import urllib.request
 
 serviceurl = 'http://python-data.dr-chuck.net/geojson?'
 
@@ -14,4 +15,5 @@ while True:
 
     print('Retrieved',len(data),'characters')
 
-#    info = json.loads(data.decode('utf-8'))
+    info = json.loads(data.decode('utf-8'))
+    print('Place id:',info['results'][0]['place_id'])
