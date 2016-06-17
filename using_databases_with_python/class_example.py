@@ -1,6 +1,6 @@
 class PartyAnimal:
 
-    c = 0 
+    x = 0 
 
     def party(self):
         self.x += 1
@@ -9,6 +9,6 @@ class PartyAnimal:
 an = PartyAnimal()
 
 an.party()
-an.perty()
+an.party()
 an.party()
 
