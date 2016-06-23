@@ -1,5 +1,4 @@
 import sqlite3
-import re
 
 conn = sqlite3.connect('emaildb.sqlite')
 cur = conn.cursor()
@@ -16,8 +15,9 @@ fh = open(fname)
 for line in fh:
     if not line.startswith('From: ') : continue
     pieces = line.split()
-    org = pieces[1]
-    print(email)
+    email = pieces[1]
+    org = email.split('@')[-1]
+    print(org)
     cur.execute('SELECT count FROM Counts WHERE org = ? ', (org, ))
     row = cur.fetchone()
     if row is None:
@@ -40,4 +40,3 @@ for row in cur.execute(sqlstr) :
     print(str(row[0]), row[1])
 
 cur.close()
-
